@@ -37,24 +37,59 @@ export default function ProblemSolutionSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {problems.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow border border-border"
-            >
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <div className="text-4xl mb-4">{item.emoji}</div>
-                  <h3 className="font-semibold text-lg text-foreground">The Problem</h3>
-                  <p className="text-foreground/70">{item.problem}</p>
-                </div>
-                <div className="pt-4 border-t border-border">
-                  <h4 className="font-semibold text-accent mb-2">✓ Our Solution</h4>
-                  <p className="text-foreground/70">{item.solution}</p>
-                </div>
-              </div>
+          {/* Problem Side */}
+          <div className="space-y-8">
+            <div className="relative rounded-xl overflow-hidden shadow-lg h-80">
+              <img
+                src="/problem-fake.png"
+                alt="Problem: Fake electronics and frustration"
+                className="w-full h-full object-cover"
+              />
             </div>
-          ))}
+            <div className="space-y-4">
+              <h3 className="font-serif text-3xl font-bold text-foreground">The Problem</h3>
+              <p className="text-lg text-foreground/70">
+                Buying electronics online in Lagos can be risky. You worry about authenticity, hidden defects, and poor support.
+              </p>
+              <ul className="space-y-3">
+                {problems.slice(0, 2).map((item, index) => (
+                  <li key={index} className="flex gap-3">
+                    <span className="text-red-500 text-2xl">✕</span>
+                    <div>
+                      <p className="font-semibold text-foreground">{item.problem}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Solution Side */}
+          <div className="space-y-8">
+            <div className="relative rounded-xl overflow-hidden shadow-lg h-80">
+              <img
+                src="/solution-genuine.png"
+                alt="Solution: Genuine products with confidence"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="space-y-4">
+              <h3 className="font-serif text-3xl font-bold text-accent">The Solution</h3>
+              <p className="text-lg text-foreground/70">
+                Bedazzled Mart solves every problem with verified authenticity and dedicated support.
+              </p>
+              <ul className="space-y-3">
+                {problems.slice(2, 4).map((item, index) => (
+                  <li key={index} className="flex gap-3">
+                    <span className="text-accent text-2xl">✓</span>
+                    <div>
+                      <p className="font-semibold text-foreground">{item.solution}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -70,18 +70,13 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Hero Image Placeholder */}
-          <div className="relative h-96 lg:h-[500px] bg-gradient-to-br from-secondary to-muted rounded-2xl overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center space-y-4">
-                <div className="w-24 h-24 bg-primary/20 rounded-full mx-auto flex items-center justify-center">
-                  <svg className="w-16 h-16 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17V7m0 0H5m4 0h4m0 0V7m0 0h4" />
-                  </svg>
-                </div>
-                <p className="text-foreground/60 font-medium">Premium Electronics</p>
-              </div>
-            </div>
+          {/* Hero Image */}
+          <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src="/hero-lifestyle.png"
+              alt="Nigerian family enjoying premium appliances in modern home"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>

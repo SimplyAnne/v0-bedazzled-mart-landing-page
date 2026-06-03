@@ -11,6 +11,7 @@ export default function FeaturedProductsSection() {
       rating: 5,
       reviews: 124,
       features: ['4K Resolution', 'WebOS', 'Voice Control'],
+      image: '/tv-product.png',
     },
     {
       name: 'Samsung 500L Refrigerator',
@@ -18,6 +19,7 @@ export default function FeaturedProductsSection() {
       rating: 5,
       reviews: 98,
       features: ['No-Frost', 'Energy Save', 'Digital Display'],
+      image: '/fridge-product.png',
     },
     {
       name: 'Midea 2HP Air Conditioner',
@@ -25,6 +27,7 @@ export default function FeaturedProductsSection() {
       rating: 4.8,
       reviews: 156,
       features: ['Quiet Operation', 'Eco Mode', '5yr Warranty'],
+      image: '/ac-product.png',
     },
     {
       name: 'Indomie 8kg Washing Machine',
@@ -32,6 +35,7 @@ export default function FeaturedProductsSection() {
       rating: 4.9,
       reviews: 203,
       features: ['Auto Dispenser', 'Inverter', 'Quiet'],
+      image: '/washer-product.png',
     },
     {
       name: 'Scanfrost Gas Cooker',
@@ -39,6 +43,7 @@ export default function FeaturedProductsSection() {
       rating: 4.7,
       reviews: 87,
       features: ['4 Burner', 'Auto Ignition', 'Oven'],
+      image: '/kitchen-product.png',
     },
     {
       name: 'Luminous Inverter 5KVA',
@@ -46,6 +51,7 @@ export default function FeaturedProductsSection() {
       rating: 5,
       reviews: 142,
       features: ['High Efficiency', 'Silent', 'Smart Features'],
+      image: '/inverter-product.png',
     },
   ]
 
@@ -63,9 +69,13 @@ export default function FeaturedProductsSection() {
               key={index}
               className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-border group"
             >
-              {/* Product Image Placeholder */}
-              <div className="h-48 bg-gradient-to-br from-muted to-secondary flex items-center justify-center group-hover:from-secondary group-hover:to-muted transition">
-                <div className="text-5xl">📱</div>
+              {/* Product Image */}
+              <div className="h-48 bg-secondary overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                />
               </div>
 
               {/* Product Info */}

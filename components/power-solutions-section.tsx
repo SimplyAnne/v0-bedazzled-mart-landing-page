@@ -38,6 +38,15 @@ export default function PowerSolutionsSection() {
           </p>
         </div>
 
+        {/* Power Setup Image */}
+        <div className="mb-12 rounded-xl overflow-hidden shadow-lg h-80 md:h-96">
+          <img
+            src="/power-setup.png"
+            alt="Complete home solar power system with inverter and batteries"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {solutions.map((solution, index) => (
             <div
