@@ -17,9 +17,14 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-background via-background to-secondary/5 pt-32 pb-12">
+    <section className="relative min-h-screen bg-gradient-to-b from-background via-background to-secondary/5 pt-20 pb-12">
       {/* Hero Content */}
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        {/* Bedazzled Mart Logo - Centered */}
+        <div className="flex justify-center mb-8">
+          <img src="/bedazzled-logo.png" alt="Bedazzled Mart" className="h-32 w-auto drop-shadow-lg" />
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">

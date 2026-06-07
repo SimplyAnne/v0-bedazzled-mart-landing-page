@@ -11,10 +11,10 @@ export default function HeaderSection() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <img src="/bedazzled-logo.png" alt="Bedazzled Mart" className="h-10 w-auto" />
+        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+          <img src="/bedazzled-logo.png" alt="Bedazzled Mart" className="h-16 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
