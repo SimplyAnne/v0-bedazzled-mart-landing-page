@@ -63,7 +63,7 @@ export default function HeaderSection() {
             ))}
           </nav>
 
-          {/* Right Side - Cart, Auth & WhatsApp */}
+          {/* Right Side - Cart & WhatsApp */}
           <div className="flex items-center gap-3">
             {/* Cart Icon */}
             <button className="relative p-2.5 hover:bg-secondary rounded-lg transition group">
@@ -74,22 +74,6 @@ export default function HeaderSection() {
                 </span>
               )}
             </button>
-
-            {/* Auth Links - Desktop */}
-            <div className="hidden md:flex items-center gap-2">
-              <Link
-                href="/sign-in"
-                className="px-4 py-2.5 text-foreground hover:text-primary font-medium transition"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/sign-up"
-                className="px-4 py-2.5 bg-accent hover:bg-accent/90 text-accent-foreground rounded-lg font-semibold transition"
-              >
-                Sign Up
-              </Link>
-            </div>
 
             {/* WhatsApp Button - Desktop */}
             <button
@@ -138,18 +122,6 @@ export default function HeaderSection() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/sign-in"
-              className="block px-4 py-3 text-foreground hover:bg-primary/10 hover:text-primary font-medium transition rounded-lg"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/sign-up"
-              className="block px-4 py-3 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold transition rounded-lg text-center"
-            >
-              Sign Up
-            </Link>
             <button
               onClick={() => {
                 handleWhatsAppClick()
