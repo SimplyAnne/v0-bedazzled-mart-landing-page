@@ -61,11 +61,11 @@ export default function TrustSection() {
         {/* Trust Metrics */}
         <div className="grid md:grid-cols-4 gap-6 mb-16">
           <div className="bg-primary/5 rounded-xl p-8 text-center space-y-2 border border-primary/20">
-            <p className="text-4xl font-bold text-primary">10K+</p>
+            <p className="text-4xl font-bold text-primary">450+</p>
             <p className="text-foreground/60">Happy Customers</p>
           </div>
           <div className="bg-accent/5 rounded-xl p-8 text-center space-y-2 border border-accent/20">
-            <p className="text-4xl font-bold text-accent">5K+</p>
+            <p className="text-4xl font-bold text-accent">280+</p>
             <p className="text-foreground/60">Products Delivered</p>
           </div>
           <div className="bg-primary/5 rounded-xl p-8 text-center space-y-2 border border-primary/20">

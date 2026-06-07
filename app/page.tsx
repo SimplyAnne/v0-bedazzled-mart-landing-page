@@ -1,3 +1,4 @@
+import HeaderSection from '@/components/header-section'
 import HeroSection from '@/components/hero-section'
 import CategoriesSection from '@/components/categories-section'
 import WhyBedazzledSection from '@/components/why-bedazzled-section'
@@ -12,6 +13,7 @@ import FooterSection from '@/components/footer-section'
 export default function Page() {
   return (
     <main className="min-h-screen bg-background">
+      <HeaderSection />
       <HeroSection />
       <CategoriesSection />
       <WhyBedazzledSection />
