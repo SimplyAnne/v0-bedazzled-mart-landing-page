@@ -4,6 +4,14 @@ import { Star } from 'lucide-react'
 import { Button } from './ui/button'
 
 export default function FeaturedProductsSection() {
+  const handleProductClick = (productName: string) => {
+    window.open(`https://wa.me/2348117844502?text=Hi%20Bedazzled%20Mart!%20I%27m%20interested%20in%20${encodeURIComponent(productName)}`, '_blank')
+  }
+
+  const handleViewAll = () => {
+    window.open('https://wa.me/2348117844502?text=Hi%20Bedazzled%20Mart!%20Can%20you%20show%20me%20all%20your%20products?', '_blank')
+  }
+
   const products = [
     {
       name: 'LG 65" 4K Smart TV',
@@ -112,9 +120,12 @@ export default function FeaturedProductsSection() {
                 {/* Price and CTA */}
                 <div className="pt-4 border-t border-border space-y-3">
                   <div className="text-2xl font-bold text-accent">{product.price}</div>
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                  <button
+                    onClick={() => handleProductClick(product.name)}
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2.5 rounded-lg transition"
+                  >
                     View Details
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>
@@ -122,9 +133,12 @@ export default function FeaturedProductsSection() {
         </div>
 
         <div className="mt-12 text-center">
-          <Button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 text-lg">
+          <button
+            onClick={handleViewAll}
+            className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 text-lg font-semibold rounded-lg transition"
+          >
             View All Products
-          </Button>
+          </button>
         </div>
       </div>
     </section>
