@@ -4,10 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { authClient } from '@/lib/auth-client'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Card } from '@/components/ui/card'
 
 export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
   const router = useRouter()
@@ -40,15 +36,15 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
   }
 
   return (
-    <main className="min-h-svh bg-background flex items-center justify-center px-4">
-      <Card className="w-full max-w-sm p-6">
-        <div className="mb-6">
+    <main className="min-h-screen bg-background flex items-center justify-center px-4">
+      <div className="w-full max-w-sm bg-white rounded-lg shadow-md border border-border p-8 space-y-6">
+        <div>
           <h1 className="text-2xl font-semibold tracking-tight text-foreground">
             {isSignUp ? 'Create an account' : 'Welcome back'}
           </h1>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm text-foreground/60 mt-1">
             {isSignUp
-              ? 'Sign up to get started'
+              ? 'Sign up to get started with Bedazzled Mart'
               : 'Sign in to your account to continue'}
           </p>
         </div>
@@ -56,30 +52,40 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {isSignUp && (
             <div className="flex flex-col gap-2">
-              <Label htmlFor="name">Name</Label>
-              <Input
+              <label htmlFor="name" className="text-sm font-medium text-foreground">
+                Full Name
+              </label>
+              <input
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
                 autoComplete="name"
+                placeholder="John Doe"
+                className="w-full px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           )}
           <div className="flex flex-col gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
+            <label htmlFor="email" className="text-sm font-medium text-foreground">
+              Email
+            </label>
+            <input
               id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
+              placeholder="you@example.com"
+              className="w-full px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
           <div className="flex flex-col gap-2">
-            <Label htmlFor="password">Password</Label>
-            <Input
+            <label htmlFor="password" className="text-sm font-medium text-foreground">
+              Password
+            </label>
+            <input
               id="password"
               type="password"
               value={password}
@@ -87,34 +93,40 @@ export function AuthForm({ mode }: { mode: 'sign-in' | 'sign-up' }) {
               required
               minLength={8}
               autoComplete={isSignUp ? 'new-password' : 'current-password'}
+              placeholder="••••••••"
+              className="w-full px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
 
           {error && (
-            <p className="text-sm text-destructive" role="alert">
+            <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">
               {error}
             </p>
           )}
 
-          <Button type="submit" disabled={loading} className="w-full">
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-primary hover:bg-primary/90 disabled:opacity-50 text-primary-foreground font-semibold py-2.5 rounded-lg transition"
+          >
             {loading
               ? 'Please wait...'
               : isSignUp
                 ? 'Create account'
                 : 'Sign in'}
-          </Button>
+          </button>
         </form>
 
-        <p className="text-sm text-muted-foreground text-center mt-6">
+        <p className="text-sm text-foreground/60 text-center">
           {isSignUp ? 'Already have an account? ' : "Don't have an account? "}
           <Link
             href={isSignUp ? '/sign-in' : '/sign-up'}
-            className="text-foreground font-medium underline-offset-4 hover:underline"
+            className="text-primary hover:text-primary/90 font-medium underline"
           >
             {isSignUp ? 'Sign in' : 'Sign up'}
           </Link>
         </p>
-      </Card>
+      </div>
     </main>
   )
 }
