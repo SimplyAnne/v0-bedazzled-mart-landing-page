@@ -1,11 +1,15 @@
 'use client'
 
-import { Star, ShoppingCart } from 'lucide-react'
+import { Star, ShoppingCart, Heart } from 'lucide-react'
 import { useCart } from '@/lib/cart-context'
+import { useWishlist } from '@/lib/wishlist-context'
+import { useState } from 'react'
 import { Button } from './ui/button'
 
 export default function FeaturedProductsSection() {
   const { addToCart } = useCart()
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist()
+  const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
   const handleViewDetails = (productName: string) => {
     window.open(`https://wa.me/2348117844502?text=Hi%20Bedazzled%20Mart!%20I%27m%20interested%20in%20${encodeURIComponent(productName)}`, '_blank')
@@ -23,6 +27,7 @@ export default function FeaturedProductsSection() {
       priceNum: 450000,
       rating: 5,
       reviews: 124,
+      category: 'entertainment',
       features: ['4K Resolution', 'WebOS', 'Voice Control'],
       image: '/tv-product.png',
     },
@@ -33,6 +38,7 @@ export default function FeaturedProductsSection() {
       priceNum: 380000,
       rating: 5,
       reviews: 98,
+      category: 'kitchen',
       features: ['No-Frost', 'Energy Save', 'Digital Display'],
       image: '/fridge-product.png',
     },
@@ -43,6 +49,7 @@ export default function FeaturedProductsSection() {
       priceNum: 220000,
       rating: 4.8,
       reviews: 156,
+      category: 'climate',
       features: ['Quiet Operation', 'Eco Mode', '5yr Warranty'],
       image: '/ac-product.png',
     },
@@ -53,6 +60,7 @@ export default function FeaturedProductsSection() {
       priceNum: 180000,
       rating: 4.9,
       reviews: 203,
+      category: 'laundry',
       features: ['Auto Dispenser', 'Inverter', 'Quiet'],
       image: '/washer-product.png',
     },
@@ -63,6 +71,7 @@ export default function FeaturedProductsSection() {
       priceNum: 85000,
       rating: 4.7,
       reviews: 87,
+      category: 'kitchen',
       features: ['4 Burner', 'Auto Ignition', 'Oven'],
       image: '/kitchen-product.png',
     },
@@ -73,25 +82,79 @@ export default function FeaturedProductsSection() {
       priceNum: 650000,
       rating: 5,
       reviews: 142,
+      category: 'power',
       features: ['High Efficiency', 'Silent', 'Smart Features'],
       image: '/inverter-product.png',
     },
   ]
 
+  const categories = [
+    { id: 'all', label: 'All Products' },
+    { id: 'entertainment', label: 'Entertainment' },
+    { id: 'kitchen', label: 'Kitchen' },
+    { id: 'laundry', label: 'Laundry' },
+    { id: 'climate', label: 'Climate' },
+    { id: 'power', label: 'Power Solutions' },
+  ]
+
+  const filteredProducts = selectedCategory === 'all' 
+    ? products 
+    : products.filter(p => p.category === selectedCategory)
+
   return (
     <section id="products" className="py-20 bg-background">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-4 mb-12">
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground">Best Sellers</h2>
           <p className="text-lg text-foreground/60">Our most trusted and highly-rated products</p>
         </div>
 
+        {/* Category Filters */}
+        <div className="mb-12 flex flex-wrap gap-3 justify-center">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-6 py-2.5 rounded-full font-semibold transition-all ${
+                selectedCategory === cat.id
+                  ? 'bg-accent text-accent-foreground shadow-lg'
+                  : 'bg-secondary text-foreground hover:bg-secondary/80'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-border group"
+              className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-border group relative"
             >
+              {/* Wishlist Button */}
+              <button
+                onClick={() => {
+                  if (isInWishlist(product.id)) {
+                    removeFromWishlist(product.id)
+                  } else {
+                    addToWishlist({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      image: product.image,
+                    })
+                  }
+                }}
+                className="absolute top-3 right-3 z-10 bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-all"
+              >
+                <Heart
+                  className={`w-5 h-5 ${
+                    isInWishlist(product.id) ? 'fill-accent text-accent' : 'text-foreground/60 hover:text-accent'
+                  }`}
+                />
+              </button>
+
               {/* Product Image */}
               <div className="h-48 bg-secondary overflow-hidden">
                 <img

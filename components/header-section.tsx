@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ShoppingCart, Menu, X, Phone } from 'lucide-react'
 import { useCart } from '@/lib/cart-context'
+import SearchBar from './search-bar'
 
 export default function HeaderSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -63,8 +64,11 @@ export default function HeaderSection() {
             ))}
           </nav>
 
-          {/* Right Side - Cart & WhatsApp */}
+          {/* Right Side - Search, Cart & WhatsApp */}
           <div className="flex items-center gap-3">
+            {/* Search Bar */}
+            <SearchBar />
+
             {/* Cart Icon */}
             <button className="relative p-2.5 hover:bg-secondary rounded-lg transition group">
               <ShoppingCart className="w-6 h-6 text-foreground group-hover:text-primary transition" />
